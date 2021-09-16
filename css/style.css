@@ -2,14 +2,18 @@
 	--white:white;
 	--pink: hotpink;
 	--pinkClear: papayawhip;
+  --black: black;
+  --colorKirby: pink;
 }
 
 body {
   display: grid;
+  counter-reset: score;
   height: 100vh;
   margin: 0;
   place-items: center;
   width: 100%;
+  overflow: hidden;
 }
 
 .phone {
@@ -21,21 +25,49 @@ body {
   height: 600px;
   position: relative;
   width: 300px;
+  overflow: hidden;
 }
 
-.layer-1 {
-  background: var(--white);
+.background-layer {
+  background-color: #444cf7;
+  background-image:  linear-gradient(161deg, #11da19 25%, transparent 25%), linear-gradient(202deg, #0fe217 25%, transparent 25%), linear-gradient(61deg, #75422f 25%, transparent 25%), linear-gradient(301deg, #75422f 25%, #f37345 25%);
+  background-position:  28px 0, 28px 0, 0 0, 0 0;
+  background-size: 56px 56px;
+  background-repeat: repeat;
+}
+
+.layer input[type="checkbox"] {
+  appearance: none;
+  cursor: pointer;
+  height: 60px;
+  margin: 0;
+  position: relative;
+  top: 0;
+  width: 80px;
+  z-index: 2;
+}
+
+input[type=checkbox]:focus {
+  appearance: none;
+  outline: none;
+}
+
+input:checked {
+  counter-increment: score;
+}
+
+.layer-1 { /*Bunny*/
+  animation: bunny 1s ease-in-out infinite;
   bottom: 0;
   height: 450px;
   position: absolute;
   right: 60px;
   width: 80px;
   z-index: 1;
-  border-radius: 50px 50px 0 0;
 }
 
-.layer-2 {
-  background: var(--white);
+.layer-2 { /*Bunny*/
+  animation: bunny .9s ease-in-out infinite;
   bottom: 0;
   height: 450px;
   position: absolute;
@@ -45,8 +77,8 @@ body {
 }
 
 .layer-3 {
-  background: pink;
   bottom: 0;
+  border-radius: 10px 10px 0 0;
   height: 400px;
   left: 0;
   margin: 0 auto;
@@ -56,9 +88,9 @@ body {
   z-index: 3;
 }
 
-.layer-4 {
-  background: var(--white);
-  bottom: 0;
+.layer-4 { /*Kirby*/
+  animation: kirby 1.2s ease-in-out infinite;
+  bottom: 10px;
   height: 350px;
   left: 15px;
   position: absolute;
@@ -67,17 +99,18 @@ body {
 }
 
 .layer-5 {
-  background: papayawhip;
+  border-radius: 10px 10px 0 35px;
   bottom: 0;
+  box-shadow: 2px 20px 20px black;
   height: 300px;
   position: absolute;
   width: 200px;
   z-index: 5;
 }
 
-.layer-6 {
-  background: var(--white);
-  bottom: 0;
+.layer-6 { /*Kirby*/
+  animation: kirby .85s ease-in-out infinite;
+  bottom: 10px;
   height: 250px;
   position: absolute;
   right: 30px;
@@ -86,8 +119,9 @@ body {
 }
 
 .layer-7 {
-  background: pink;
+  border-radius: 10px 10px 35px 30px;
   bottom: 0;
+  box-shadow: -5px 15px 25px black;
   height: 200px;
   position: absolute;
   right: 0;
@@ -108,7 +142,6 @@ body {
 }
 
 .layer-9 {
-  background: var(--white);
   bottom: 0;
   height: 100px;
   position: absolute;
@@ -116,7 +149,40 @@ body {
   z-index: 9;
 }
 
-.layer-10 {
+.cloud {
+  background: white;
+  display: inline-block;
+  position: absolute;
+}
+
+.layer-9__left-cloud {
+  border-radius: 40px 40px 0 0;
+  box-shadow: 1px 5px 15px black;
+  display: inline-block;
+  height: 100%;
+  left: 0;
+  width: 80px;
+}
+
+.layer-9__right-cloud {
+  border-radius: 0 40px 30px 0;
+  bottom: 0;
+  box-shadow: 10px 5px 20px -10px black;
+  height: 60%;
+  left: 80px;
+  width: 40px;
+}
+
+.layer-10 { /*Kirby*/
+  /*animation: kirby 1.2s ease-in-out infinite;*/
+  bottom: 0;
+  height: 100px;
+  position: absolute;
+  width: 120px;
+  z-index: 9;
+}
+
+.layer-11 {
   background: pink;
   bottom: 0;
   height: 100px;
@@ -124,4 +190,150 @@ body {
   right: 0;
   width: 120px;
   z-index: 10;
+  border-radius: 10px 10px 35px 0;
+}
+
+.layer-11 {
+  bottom: 0;
+  height: 100px;
+  position: absolute;
+  right: 0;
+  width: 120px;
+  z-index: 10;
+}
+
+.layer-11__left-cloud {
+  background: white;
+  border-radius: 40px 0 0 30px;
+  bottom: 0;
+  display: inline-block;
+  height: 60%;
+  right: 80px;
+  position: absolute;
+  width: 40px;
+}
+
+.layer-11__right-cloud {
+  background: white;
+  border-radius: 40px 40px 0 0;
+  display: inline-block;
+  height: 100%;
+  right: 0px;
+  position: absolute;
+  width: 80px;
+}
+
+.left-ear--outer {
+  background: white;
+  border-radius: 90%;
+  width: 20px;
+  height: 50px;
+  position: absolute;
+  left: 10px;
+}
+
+.left-ear--inner {
+  background: pink;
+  border-radius: 90%;
+  width: 10px;
+  height: 50px;
+  position: absolute;
+  left: 15px;
+  top: 8px;
+}
+
+.right-ear--outer {
+  background: white;
+  border-radius: 90%;
+  width: 20px;
+  height: 50px;
+  position: absolute;
+  right: 10px;
+}
+
+.right-ear--inner {
+  background: pink;
+  border-radius: 90%;
+  width: 10px;
+  height: 50px;
+  position: absolute;
+  right: 15px;
+  top: 8px;
+}
+
+.head {
+  background: white;
+  border-radius: 50%;
+  height: 80px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  position: absolute;
+  top: 30px;
+  width: 100%;
+}
+
+.head__eye {
+  border-radius: 50%;
+  position: absolute;
+  top: 15px;
+}
+
+.head__eye--bunny {
+  background: gray;
+  width: 4px;
+  height: 4px;
+  animation: blink 2s infinite;
+}
+
+.head__kirby {
+  background: var(--colorKirby);
+  width: 80px;
+}
+
+.head__eye--kirby {
+  background: #000000;
+  background: -webkit-linear-gradient(to top, #03a9f4, 15%, #000000);
+  background: linear-gradient(to top, #03a9f4, 15%, #000000);
+  width: 10px;
+  height: 20px;
+  animation: blinkKirby 1.5s infinite;
+}
+
+.head__eye__pupile {
+	background: #FFF;
+	width: 5px;
+	height: 10px;
+	border-radius: 50%;
+	position: absolute;
+	left: 3px;
+  animation: blinkKirbyPupile 1.5s infinite;
+}
+
+.head__eye--left {
+  left: 30px;
+}
+
+.head__eye--right {
+  right: 30px;
+}
+
+.head__eye--left--kirby {
+  left: 25px;
+}
+
+.head__eye--right--kirby {
+  right: 25px;
+}
+
+.score {
+  color: var(--black);
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  margin: 0;
+  text-align: center;
+}
+
+.score::after {
+  content: counter(score);
 }
