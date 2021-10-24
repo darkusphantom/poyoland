@@ -130,7 +130,10 @@ input:checked {
 }
 
 .layer-8 {
-  background: papayawhip;
+  /*background: papayawhip;*/
+  background-color: #9a5100;
+  opacity: 0.9;
+  background: linear-gradient(135deg, #7c2f1755 25%, transparent 25%) -10px 0/ 20px 20px, linear-gradient(225deg, #7c2f17 25%, transparent 25%) -10px 0/ 20px 20px, linear-gradient(315deg, #7c2f1755 25%, transparent 25%) 0px 0/ 20px 20px, linear-gradient(45deg, #7c2f17 25%, #9a5100 25%) 0px 0/ 20px 20px;
   bottom: 0;
   height: 120px;
   left: 0;
@@ -139,6 +142,7 @@ input:checked {
   right: 0;
   width: 200px;
   z-index: 8;
+  border-radius: 10px;
 }
 
 .layer-9 {
@@ -183,7 +187,6 @@ input:checked {
 }
 
 .layer-11 {
-  background: pink;
   bottom: 0;
   height: 100px;
   position: absolute;
@@ -191,15 +194,6 @@ input:checked {
   width: 120px;
   z-index: 10;
   border-radius: 10px 10px 35px 0;
-}
-
-.layer-11 {
-  bottom: 0;
-  height: 100px;
-  position: absolute;
-  right: 0;
-  width: 120px;
-  z-index: 10;
 }
 
 .layer-11__left-cloud {
